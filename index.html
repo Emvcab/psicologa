@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lic. Valentina Ramos — Psicóloga</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --malva: #8b6b8b;
+  --malva-dark: #6a4f6a;
+  --malva-light: #f5eef5;
+  --malva-mist: #faf5fa;
+  --rosa-suave: #e8d5e8;
+  --dorado: #c9a96e;
+  --texto: #2a1f2a;
+  --texto-muted: #7a6b7a;
+  --borde: rgba(139,107,139,0.15);
+  --fondo: #fdf9fd;
+  --blanco: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Mulish', sans-serif; background: var(--fondo); color: var(--texto); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(253,249,253,0.95); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--borde);
+  padding: 0 2rem; height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; flex-direction: column; }
+.nav-logo-top { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--malva); letter-spacing: 0.5px; }
+.nav-logo-sub { font-size: 10px; color: var(--texto-muted); letter-spacing: 2px; text-transform: uppercase; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 500; color: var(--texto-muted); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--malva); }
+.nav-cta { background: var(--malva); color: white; border: none; border-radius: 6px; padding: 10px 20px; font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--malva-dark); color: white; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 4rem;
+  padding: 8rem 4rem 4rem;
+  background: var(--blanco);
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 50%; height: 100%;
+  background: var(--malva-mist);
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--malva); font-weight: 600; margin-bottom: 1.5rem; }
+.hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--malva); }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 400; line-height: 1.15; margin-bottom: 1rem; }
+.hero h1 em { font-style: italic; color: var(--malva); }
+.hero-sub { font-size: 15px; color: var(--texto-muted); line-height: 1.8; max-width: 440px; margin-bottom: 2.5rem; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary { background: var(--malva); color: white; border: none; border-radius: 6px; padding: 14px 28px; font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.btn-primary:hover { background: var(--malva-dark); transform: translateY(-2px); color: white; }
+.btn-secondary { background: transparent; color: var(--malva); border: 1.5px solid var(--malva); border-radius: 6px; padding: 14px 28px; font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-secondary:hover { background: var(--malva); color: white; transform: translateY(-2px); }
+
+.hero-visual { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1rem; }
+.hero-foto {
+  background: linear-gradient(135deg, var(--rosa-suave), var(--malva-light));
+  border-radius: 16px; height: 280px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 6rem; border: 1px solid var(--borde);
+  position: relative; overflow: hidden;
+}
+.hero-foto::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(to top, rgba(139,107,139,0.1), transparent);
+}
+.hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.hero-stat { background: var(--blanco); border: 1px solid var(--borde); border-radius: 10px; padding: 1rem; text-align: center; }
+.hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--malva); display: block; }
+.hero-stat-label { font-size: 11px; color: var(--texto-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* SOBRE MÍ */
+.sobre-wrap { background: var(--blanco); padding: 6rem 2rem; }
+.sobre { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.sobre-img {
+  background: linear-gradient(135deg, var(--malva-light), var(--rosa-suave));
+  border-radius: 16px; aspect-ratio: 3/4;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 6rem; border: 1px solid var(--borde);
+  position: relative; overflow: hidden;
+}
+.sobre-img-badge {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: var(--malva); color: white;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  padding: 8px 20px; border-radius: 20px; white-space: nowrap;
+}
+.sobre-tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--malva); font-weight: 600; margin-bottom: 1rem; display: block; }
+.sobre h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 400; margin-bottom: 1rem; line-height: 1.2; }
+.sobre h2 em { font-style: italic; color: var(--malva); }
+.sobre p { font-size: 14px; color: var(--texto-muted); line-height: 1.9; margin-bottom: 1rem; }
+.sobre-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+.chip { background: var(--malva-light); color: var(--malva-dark); border: 1px solid var(--borde); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 500; }
+.sobre-datos { display: flex; flex-direction: column; gap: 10px; margin-top: 1.5rem; }
+.sobre-dato { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; }
+.sobre-dato .icon { font-size: 1.1rem; flex-shrink: 0; }
+.sobre-dato strong { display: block; color: var(--texto); font-weight: 600; }
+.sobre-dato span { color: var(--texto-muted); }
+
+/* SERVICIOS */
+.servicios-wrap { background: var(--malva-mist); padding: 6rem 2rem; }
+.servicios { max-width: 1100px; margin: 0 auto; }
+.section-tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--malva); font-weight: 600; margin-bottom: 1rem; display: block; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 400; margin-bottom: 0.5rem; line-height: 1.2; }
+.section-title em { font-style: italic; color: var(--malva); }
+.section-sub { font-size: 14px; color: var(--texto-muted); margin-bottom: 3rem; max-width: 500px; line-height: 1.7; }
+.servicios-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.serv-card { background: var(--blanco); border-radius: 12px; border: 1px solid var(--borde); padding: 2rem; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+.serv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--malva); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+.serv-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(139,107,139,0.12); }
+.serv-card:hover::before { transform: scaleX(1); }
+.serv-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.serv-nombre { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.serv-desc { font-size: 13px; color: var(--texto-muted); line-height: 1.7; margin-bottom: 1rem; }
+.serv-footer { display: flex; align-items: flex-end; justify-content: space-between; margin-top: auto; }
+.serv-precio { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--malva); }
+.serv-duracion { font-size: 11px; color: var(--texto-muted); margin-top: 2px; }
+.serv-btn { display: block; width: 100%; background: var(--malva-light); color: var(--malva-dark); border: none; border-radius: 6px; padding: 10px; font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; margin-top: 1.25rem; text-decoration: none; transition: background 0.2s, color 0.2s; text-align: center; }
+.serv-btn:hover { background: var(--malva); color: white; }
+
+/* PROCESO */
+.proceso-wrap { background: var(--blanco); padding: 6rem 2rem; }
+.proceso { max-width: 900px; margin: 0 auto; text-align: center; }
+.proceso-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 3rem; position: relative; }
+.proceso-steps::before { content: ''; position: absolute; top: 28px; left: 15%; right: 15%; height: 1px; background: linear-gradient(to right, var(--borde), var(--malva), var(--borde)); }
+.paso { text-align: center; }
+.paso-num { width: 56px; height: 56px; border-radius: 50%; background: var(--malva); color: white; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 4px 16px rgba(139,107,139,0.3); }
+.paso h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; margin-bottom: 0.5rem; }
+.paso p { font-size: 12px; color: var(--texto-muted); line-height: 1.6; }
+
+/* TESTIMONIOS */
+.testis-wrap { background: var(--malva-mist); padding: 6rem 2rem; }
+.testis { max-width: 1000px; margin: 0 auto; }
+.testis-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+.testi-card { background: var(--blanco); border-radius: 12px; border: 1px solid var(--borde); padding: 1.75rem; }
+.testi-stars { color: #f59e0b; font-size: 14px; margin-bottom: 0.75rem; }
+.testi-text { font-size: 13px; color: var(--texto-muted); line-height: 1.8; font-style: italic; margin-bottom: 1rem; }
+.testi-autor { font-size: 12px; font-weight: 600; color: var(--texto); }
+.testi-tipo { font-size: 11px; color: var(--malva); }
+
+/* FAQ */
+.faq-wrap { background: var(--blanco); padding: 6rem 2rem; }
+.faq { max-width: 700px; margin: 0 auto; }
+.faq-item { background: var(--fondo); border-radius: 8px; border: 1px solid var(--borde); margin-bottom: 12px; overflow: hidden; }
+.faq-q { padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 14px; transition: color 0.2s; }
+.faq-q:hover { color: var(--malva); }
+.faq-q .icon { transition: transform 0.3s; flex-shrink: 0; font-style: normal; }
+.faq-item.open .faq-q .icon { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; font-size: 13px; color: var(--texto-muted); line-height: 1.8; padding: 0 1.5rem; }
+.faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.25rem; }
+
+/* RESERVA */
+.reserva-wrap { background: var(--malva-mist); padding: 6rem 2rem; }
+.reserva { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.reserva-form { background: var(--blanco); border-radius: 16px; padding: 2.5rem; border: 1px solid var(--borde); }
+.reserva-form h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; margin-bottom: 0.25rem; }
+.reserva-form p { font-size: 13px; color: var(--texto-muted); margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--borde); }
+.fg { margin-bottom: 14px; }
+.fg label { display: block; font-size: 11px; font-weight: 700; color: var(--texto-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+.fg input, .fg select { width: 100%; border: 1.5px solid var(--borde); border-radius: 8px; padding: 11px 14px; font-size: 14px; font-family: 'Mulish', sans-serif; color: var(--texto); background: var(--blanco); outline: none; transition: border-color 0.15s; }
+.fg input:focus, .fg select:focus { border-color: var(--malva); box-shadow: 0 0 0 3px rgba(139,107,139,0.1); }
+.turnos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 4px; }
+.turno-opt { border: 1.5px solid var(--borde); border-radius: 8px; padding: 9px 6px; cursor: pointer; text-align: center; font-size: 13px; font-weight: 500; color: var(--texto-muted); transition: all 0.15s; background: var(--blanco); }
+.turno-opt:hover { border-color: var(--malva); color: var(--malva); background: var(--malva-light); }
+.turno-opt.active { border-color: var(--malva); background: var(--malva-light); color: var(--malva-dark); font-weight: 700; }
+.turno-opt.ocupado { opacity: 0.4; cursor: not-allowed; text-decoration: line-through; }
+.alias-box { display:none; background: var(--malva-light); border: 1.5px solid var(--borde); border-radius: 10px; padding: 1.25rem; margin-bottom: 14px; }
+.alias-box-title { font-size: 11px; font-weight: 700; color: var(--malva-dark); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.alias-box-alias { font-size: 13px; color: var(--texto-muted); margin-bottom: 6px; }
+.alias-box-alias strong { color: var(--texto); font-size: 15px; letter-spacing: 1px; }
+.alias-box-aviso { background: #fffbea; border: 1px solid #ffe082; border-radius: 8px; padding: 10px; font-size: 12px; color: #7a6000; margin-top: 10px; line-height: 1.6; }
+.turno-badge { background: var(--malva-light); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--malva-dark); font-weight: 600; text-align: center; margin-top: 12px; display: none; }
+.btn-reservar { width: 100%; background: var(--malva); color: white; border: none; border-radius: 8px; padding: 15px; font-family: 'Mulish', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; margin-top: 1rem; transition: background 0.2s, transform 0.15s; display: block; text-align: center; text-decoration: none; }
+.btn-reservar:hover { background: var(--malva-dark); transform: translateY(-1px); color: white; }
+.reserva-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1rem; line-height: 1.2; }
+.reserva-info h3 em { font-style: italic; color: var(--malva); }
+.reserva-info p { font-size: 14px; color: var(--texto-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+.info-items { display: flex; flex-direction: column; gap: 14px; }
+.info-item { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; }
+.info-item .icon { font-size: 1.2rem; flex-shrink: 0; }
+.info-item strong { display: block; font-weight: 600; color: var(--texto); }
+.info-item span { color: var(--texto-muted); }
+
+/* CONTACTO */
+.contacto-wrap { background: var(--malva); padding: 4rem 2rem; text-align: center; }
+.contacto-wrap h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 400; color: white; margin-bottom: 0.5rem; }
+.contacto-wrap h2 em { font-style: italic; color: var(--rosa-suave); }
+.contacto-wrap p { color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 2rem; }
+.contact-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.contact-btn { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 12px 24px; font-family: 'Mulish', sans-serif; font-size: 13px; font-weight: 600; color: white; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.contact-btn:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); color: white; }
+
+/* DEMO BADGE */
+.demo-badge { position: fixed; bottom: 20px; right: 20px; background: var(--dorado); color: white; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1px; z-index: 200; box-shadow: 0 4px 16px rgba(201,169,110,0.4); }
+
+footer { background: var(--malva-dark); color: rgba(255,255,255,0.4); padding: 1.5rem 2rem; text-align: center; font-size: 12px; letter-spacing: 1px; }
+footer span { color: rgba(255,255,255,0.7); }
+
+.alert { display: none; position: fixed; top: 80px; left: 50%; transform: translateX(-50%); background: var(--malva); color: white; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; z-index: 999; box-shadow: 0 8px 24px rgba(139,107,139,0.3); white-space: nowrap; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: all 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width:900px) {
+  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+  .hero::after { display: none; }
+  .sobre { grid-template-columns: 1fr; padding: 0; }
+  .servicios-grid { grid-template-columns: 1fr; }
+  .proceso-steps { grid-template-columns: repeat(2,1fr); }
+  .proceso-steps::before { display: none; }
+  .testis-grid { grid-template-columns: 1fr; }
+  .reserva { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-badge">✦ PÁGINA DEMO</div>
+<div class="alert" id="alert">✓ ¡Turno reservado! Te esperamos</div>
+
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-top">Lic. Valentina Ramos</span>
+    <span class="nav-logo-sub">Psicóloga · Terapia Cognitiva</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#faq">Preguntas</a></li>
+    <li><a href="#reserva">Reservar</a></li>
+  </ul>
+  <a href="#reserva" class="nav-cta">Reservar turno</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Psicóloga · Santiago del Estero</div>
+    <h1>Un lugar seguro para <em>sanar y crecer</em></h1>
+    <p class="hero-sub">Sanar es posible. Acompañarte es mi misión.</p>
+    <div class="hero-btns">
+      <a href="#reserva" class="btn-primary">Reservar mi turno</a>
+      <a href="#sobre" class="btn-secondary">Conocer más</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-foto">👩‍⚕️</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-num">+5</span><span class="hero-stat-label">Años de experiencia</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">+200</span><span class="hero-stat-label">Pacientes acompañados</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">100%</span><span class="hero-stat-label">Confidencial</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<div class="sobre-wrap" id="sobre">
+  <div class="sobre">
+    <div class="sobre-img reveal">
+      👩‍⚕️
+      <div class="sobre-img-badge">Lic. Valentina Ramos · mp512</div>
+    </div>
+    <div class="reveal">
+      <span class="sobre-tag">Sobre mí</span>
+      <h2>Lic. <em>Valentina Ramos</em></h2>
+      <p>Soy Licenciada en Psicología con especialización en Terapia Cognitivo-Conductual (mp512). Me dedico al acompañamiento de mujeres, adultos y parejas en procesos de cambio, autoconocimiento y bienestar emocional.</p>
+      <p>Trabajo desde un enfoque integrador, empático y centrado en la persona, combinando técnicas cognitivas con herramientas de mindfulness y psicología positiva.</p>
+      <div class="sobre-chips">
+        <span class="chip">Ansiedad</span>
+        <span class="chip">Depresión</span>
+        <span class="chip">Autoestima</span>
+        <span class="chip">Vínculos</span>
+        <span class="chip">Duelo</span>
+        <span class="chip">Mindfulness</span>
+      </div>
+      <div class="sobre-datos">
+        <div class="sobre-dato"><span class="icon">🎓</span><div><strong>Licenciada en Psicología</strong><span>Universidad Nacional de Tucumán</span></div></div>
+        <div class="sobre-dato"><span class="icon">📋</span><div><strong>Matrícula mp512</strong><span>Colegio de Psicólogos de Sgo. del Estero</span></div></div>
+        <div class="sobre-dato"><span class="icon">💼</span><div><strong>Especialización</strong><span>Terapia Cognitivo-Conductual · Mindfulness</span></div></div>
+        <div class="sobre-dato"><span class="icon">📍</span><div><strong>San Martín 320, Santiago del Estero</strong><span>También sesiones online</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<div class="servicios-wrap" id="servicios">
+  <div class="servicios">
+    <span class="section-tag reveal">Servicios</span>
+    <h2 class="section-title reveal">¿En qué puedo <em>ayudarte?</em></h2>
+    <p class="section-sub reveal">Ofrezco distintos tipos de consulta adaptados a tus necesidades.</p>
+    <div class="servicios-grid">
+      <div class="serv-card reveal">
+        <span class="serv-icon">🧠</span>
+        <div class="serv-nombre">Consulta Individual</div>
+        <div class="serv-desc">Espacio terapéutico para trabajar ansiedad, depresión, autoestima, duelos, crisis vitales y bienestar emocional.</div>
+        <div class="serv-precio">$35.000</div>
+        <div class="serv-duracion">⏱ 50 minutos · Presencial u online</div>
+        <a href="#reserva" class="serv-btn">Reservar turno</a>
+      </div>
+      <div class="serv-card reveal">
+        <span class="serv-icon">👫</span>
+        <div class="serv-nombre">Terapia de Pareja</div>
+        <div class="serv-desc">Acompañamiento a parejas en conflictos, crisis de comunicación, convivencia y proyectos de vida compartidos.</div>
+        <div class="serv-precio">$50.000</div>
+        <div class="serv-duracion">⏱ 60 minutos · Presencial u online</div>
+        <a href="#reserva" class="serv-btn">Reservar turno</a>
+      </div>
+      <div class="serv-card reveal">
+        <span class="serv-icon">💻</span>
+        <div class="serv-nombre">Consulta Online</div>
+        <div class="serv-desc">Sesiones por videollamada para quienes prefieren la comodidad de su hogar o se encuentran en otra ciudad.</div>
+        <div class="serv-precio">$35.000</div>
+        <div class="serv-duracion">⏱ 50 minutos · Por videollamada</div>
+        <a href="#reserva" class="serv-btn">Reservar turno</a>
+      </div>
+      <div class="serv-card reveal">
+        <span class="serv-icon">🌸</span>
+        <div class="serv-nombre">Psicología Femenina</div>
+        <div class="serv-desc">Espacio especializado para mujeres: identidad, maternidad, vínculos, empoderamiento y ciclos de vida.</div>
+        <div class="serv-precio">$35.000</div>
+        <div class="serv-duracion">⏱ 50 minutos</div>
+        <a href="#reserva" class="serv-btn">Reservar turno</a>
+      </div>
+      <div class="serv-card reveal">
+        <span class="serv-icon">🧘</span>
+        <div class="serv-nombre">Taller de Mindfulness</div>
+        <div class="serv-desc">Programa grupal de 4 semanas para reducir el estrés y la ansiedad a través de técnicas de atención plena.</div>
+        <div class="serv-precio">$20.000</div>
+        <div class="serv-duracion">⏱ 4 semanas · Grupal</div>
+        <a href="https://wa.me/5493855000000" class="serv-btn">Consultar</a>
+      </div>
+      <div class="serv-card reveal">
+        <span class="serv-icon">🔄</span>
+        <div class="serv-nombre">Primera Consulta</div>
+        <div class="serv-desc">Sesión inicial donde nos conocemos, evaluamos tu situación y definimos juntas el proceso terapéutico.</div>
+        <div class="serv-precio">$35.000</div>
+        <div class="serv-duracion">⏱ 60 minutos · Presencial u online</div>
+        <a href="#reserva" class="serv-btn">Reservar ahora</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESO -->
+<div class="proceso-wrap">
+  <div class="proceso">
+    <span class="section-tag reveal">Cómo funciona</span>
+    <h2 class="section-title reveal">El camino hacia tu <em>bienestar</em></h2>
+    <div class="proceso-steps">
+      <div class="paso reveal">
+        <div class="paso-num">1</div>
+        <h4>Reservás tu turno</h4>
+        <p>Elegís el servicio, la fecha y el horario que más te conviene.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">2</div>
+        <h4>Pagás online</h4>
+        <p>Transferencia bancaria segura. Confirmás por WhatsApp.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">3</div>
+        <h4>Primera sesión</h4>
+        <p>Nos conocemos en un espacio cálido, seguro y confidencial.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">4</div>
+        <h4>Tu transformación</h4>
+        <p>Adquirís herramientas para vivir con más bienestar y plenitud.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIOS -->
+<div class="testis-wrap">
+  <div class="testis">
+    <span class="section-tag reveal">Testimonios</span>
+    <h2 class="section-title reveal">Lo que dicen mis <em>pacientes</em></h2>
+    <div class="testis-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Valentina es una profesional increíble. Me ayudó a superar una crisis muy difícil con mucha empatía y herramientas concretas. La recomiendo al 100%."</div>
+        <div class="testi-autor">M.G.</div>
+        <div class="testi-tipo">Consulta individual · 8 meses</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Gracias a la terapia de pareja pudimos resolver conflictos que arrastrábamos hace años. El espacio que Valentina genera es muy seguro y sin juicios."</div>
+        <div class="testi-autor">P. y R.</div>
+        <div class="testi-tipo">Terapia de pareja · 6 meses</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Las sesiones online son perfectas. Desde casa, con comodidad, y la calidad es igual que presencial. Me cambió la vida trabajar con ella."</div>
+        <div class="testi-autor">L.F.</div>
+        <div class="testi-tipo">Consulta online · 1 año</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-wrap" id="faq">
+  <div class="faq">
+    <span class="section-tag reveal">Preguntas frecuentes</span>
+    <h2 class="section-title reveal">Todo lo que querés <em>saber</em></h2>
+    <br>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>¿Cómo es la primera sesión?</span><span class="icon">+</span></div>
+      <div class="faq-a">La primera sesión es una entrevista inicial donde me contás lo que te trajo y qué esperás del proceso. Es un espacio relajado, sin presiones, donde evaluamos juntas si hay conexión y si el proceso es adecuado para vos.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>¿Las sesiones son confidenciales?</span><span class="icon">+</span></div>
+      <div class="faq-a">Sí, absolutamente. Todo lo que se habla en sesión está amparado por el secreto profesional. Es un espacio completamente seguro y privado.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>¿Cuántas sesiones necesito?</span><span class="icon">+</span></div>
+      <div class="faq-a">Depende de cada persona y situación. Algunos procesos son breves (8-12 sesiones) y otros más extensos. Lo definimos juntas en función de tus objetivos y evolución.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>¿Cómo funciona el pago por transferencia?</span><span class="icon">+</span></div>
+      <div class="faq-a">Al reservar tu turno te mostramos el alias bancario. Realizás la transferencia y enviás el comprobante por WhatsApp. Una vez confirmado, tu turno queda reservado.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)"><span>¿Puedo cancelar o reprogramar?</span><span class="icon">+</span></div>
+      <div class="faq-a">Sí, podés cancelar o reprogramar con al menos 24 horas de anticipación contactándome por WhatsApp. Las cancelaciones con menos tiempo pueden no tener devolución.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESERVA -->
+<div class="reserva-wrap" id="reserva">
+  <div class="reserva">
+    <div class="reserva-form reveal">
+      <h3>Reservá tu turno</h3>
+      <p>Completá el formulario y coordinamos tu primera sesión.</p>
+      <div class="fg"><label>Nombre completo</label><input type="text" id="r-nombre" placeholder="Tu nombre y apellido"></div>
+      <div class="fg"><label>Email</label><input type="email" id="r-email" placeholder="tu@email.com"></div>
+      <div class="fg"><label>Teléfono / WhatsApp</label><input type="tel" id="r-tel" placeholder="+54 385 000-0000"></div>
+      <div class="fg">
+        <label>Tipo de consulta</label>
+        <select id="r-servicio">
+          <option value="">Seleccioná un servicio</option>
+          <option value="individual">Consulta Individual — $35.000</option>
+          <option value="pareja">Terapia de Pareja — $50.000</option>
+          <option value="online">Consulta Online — $35.000</option>
+          <option value="femenina">Psicología Femenina — $35.000</option>
+          <option value="primera">Primera Consulta — $35.000</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Modalidad</label>
+        <select id="r-modalidad">
+          <option value="presencial">Presencial — San Martín 320</option>
+          <option value="online">Online — Por videollamada</option>
+        </select>
+      </div>
+      <div class="fg"><label>Fecha</label><input type="date" id="r-fecha" onchange="mostrarTurnos()"></div>
+      <div id="turnos-container" style="display:none;">
+        <label style="font-size:11px;font-weight:700;color:var(--texto-muted);display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;">Horario disponible</label>
+        <div class="turnos-grid">
+          <div class="turno-opt" onclick="selectTurno(this,'09:00')">09:00</div>
+          <div class="turno-opt" onclick="selectTurno(this,'10:00')">10:00</div>
+          <div class="turno-opt ocupado">11:00</div>
+          <div class="turno-opt" onclick="selectTurno(this,'14:00')">14:00</div>
+          <div class="turno-opt" onclick="selectTurno(this,'15:00')">15:00</div>
+          <div class="turno-opt ocupado">16:00</div>
+          <div class="turno-opt" onclick="selectTurno(this,'17:00')">17:00</div>
+          <div class="turno-opt" onclick="selectTurno(this,'18:00')">18:00</div>
+          <div class="turno-opt" onclick="selectTurno(this,'19:00')">19:00</div>
+        </div>
+      </div>
+      <div class="turno-badge" id="turno-badge">📅 Turno seleccionado</div>
+      <div class="fg" style="margin-top:14px;">
+        <label>Método de pago</label>
+        <select id="r-metodo" onchange="toggleMetodo()">
+          <option value="">Seleccioná cómo pagar</option>
+          <option value="transferencia">🏦 Transferencia bancaria</option>
+          <option value="mp">💙 Mercado Pago</option>
+        </select>
+      </div>
+      <div class="alias-box" id="alias-box">
+        <div class="alias-box-title">Datos para transferir</div>
+        <div class="alias-box-alias">Alias: <strong>VALENTINA.PSI.SGO</strong></div>
+        <div class="alias-box-alias">Titular: <strong>Valentina Ramos</strong></div>
+        <div class="alias-box-aviso">⚠️ Una vez realizada la transferencia enviá el comprobante por WhatsApp al <strong>+54 385 500-0000</strong> para confirmar tu turno.</div>
+      </div>
+      <button class="btn-reservar" onclick="validar()">Confirmar turno →</button>
+    </div>
+
+    <div class="reserva-info reveal">
+      <h3>Tu bienestar es <em>prioridad</em></h3>
+      <p>Dar el primer paso es el más importante. Estoy aquí para acompañarte en cada etapa del proceso.</p>
+      <div class="info-items">
+        <div class="info-item"><span class="icon">🔒</span><div><strong>100% Confidencial</strong><span>Secreto profesional garantizado</span></div></div>
+        <div class="info-item"><span class="icon">💳</span><div><strong>Pago flexible</strong><span>Transferencia bancaria o Mercado Pago</span></div></div>
+        <div class="info-item"><span class="icon">📅</span><div><strong>Reprogramación</strong><span>Con 24hs de anticipación sin costo</span></div></div>
+        <div class="info-item"><span class="icon">📍</span><div><strong>San Martín 320</strong><span>Santiago del Estero Capital</span></div></div>
+        <div class="info-item"><span class="icon">💻</span><div><strong>También online</strong><span>Sesiones por videollamada</span></div></div>
+        <div class="info-item"><span class="icon">⏱</span><div><strong>50 a 60 minutos</strong><span>por sesión según el servicio</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<div class="contacto-wrap">
+  <h2>¿Lista para dar el <em>primer paso?</em></h2>
+  <p>Estoy para acompañarte. Escribime cuando quieras.</p>
+  <div class="contact-btns">
+    <a href="https://wa.me/5493855000000" class="contact-btn">💬 WhatsApp</a>
+    <a href="mailto:valentina.ramos.psi@gmail.com" class="contact-btn">📧 Email</a>
+    <a href="#reserva" class="contact-btn">📅 Reservar turno</a>
+  </div>
+</div>
+
+<footer>
+  <span>Lic. Valentina Ramos</span> · Psicóloga · Terapia Cognitivo-Conductual · mp512 · Santiago del Estero 🇦🇷
+</footer>
+
+<script>
+  let turnoSeleccionado = '';
+
+  function mostrarTurnos() {
+    const fecha = document.getElementById('r-fecha').value;
+    document.getElementById('turnos-container').style.display = fecha ? 'block' : 'none';
+    turnoSeleccionado = '';
+    document.getElementById('turno-badge').style.display = 'none';
+    document.querySelectorAll('.turno-opt').forEach(t => t.classList.remove('active'));
+  }
+
+  function selectTurno(el, hora) {
+    if (el.classList.contains('ocupado')) return;
+    document.querySelectorAll('.turno-opt').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    turnoSeleccionado = hora;
+    const fecha = document.getElementById('r-fecha').value;
+    const d = new Date(fecha + 'T12:00:00');
+    const fechaStr = d.toLocaleDateString('es-AR', {weekday:'long', day:'numeric', month:'long'});
+    const badge = document.getElementById('turno-badge');
+    badge.textContent = '📅 ' + fechaStr + ' a las ' + hora + ' hs';
+    badge.style.display = 'block';
+  }
+
+  function toggleMetodo() {
+    const metodo = document.getElementById('r-metodo').value;
+    document.getElementById('alias-box').style.display = metodo === 'transferencia' ? 'block' : 'none';
+  }
+
+  function validar() {
+    const nombre   = document.getElementById('r-nombre').value.trim();
+    const email    = document.getElementById('r-email').value.trim();
+    const tel      = document.getElementById('r-tel').value.trim();
+    const servicio = document.getElementById('r-servicio').value;
+    const fecha    = document.getElementById('r-fecha').value;
+    const metodo   = document.getElementById('r-metodo').value;
+    if (!nombre)   { showAlert('⚠️ Completá tu nombre'); return; }
+    if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { showAlert('⚠️ Email inválido'); return; }
+    if (!tel)      { showAlert('⚠️ Completá tu teléfono'); return; }
+    if (!servicio) { showAlert('⚠️ Elegí un servicio'); return; }
+    if (!fecha)    { showAlert('⚠️ Elegí una fecha'); return; }
+    if (!turnoSeleccionado) { showAlert('⚠️ Elegí un horario'); return; }
+    if (!metodo)   { showAlert('⚠️ Elegí un método de pago'); return; }
+    showAlert('✓ ¡Turno reservado! Coordinamos por WhatsApp');
+  }
+
+  function showAlert(msg) {
+    const a = document.getElementById('alert');
+    a.textContent = msg; a.style.display = 'block';
+    a.style.background = msg.includes('⚠️') ? '#c0392b' : 'var(--malva)';
+    setTimeout(() => a.style.display = 'none', 4000);
+  }
+
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+
+  document.getElementById('r-fecha').min = new Date().toISOString().split('T')[0];
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
